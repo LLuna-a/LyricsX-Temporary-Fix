@@ -1,0 +1,54 @@
+#!/usr/bin/osascript
+#!/bin/bash
+tell application "Spotify"
+	-- Spotify data
+	set currentPosition to player position
+	set currentPosition to round currentPosition rounding down
+	set totalDuration to (duration of current track) / 1000
+	
+	-- Player position
+	set current to my calculateTime(currentPosition)
+	
+	-- Total duration
+	set total to my calculateTime(totalDuration)
+	
+	return "(" & current & " / " & total & ")"
+	
+	
+end tell
+
+on calculateTime(totalSeconds)
+	-- Calculate minutes and seconds
+	set min to (totalSeconds / 60)
+	set s to round min mod 1 * 60
+	set min to round min rounding down
+	
+	-- Handle if seconds is ever exactly 60
+	if s is equal to 60 then
+		set s to 0
+		set min to min + 1
+	end if
+	
+	-- Add leading zeros
+	if s is less than 10 then
+		set s to "0" & s
+	end if
+	
+	return min & ":" & s
+	
+	
+end calculateTime
+if current is equal to 0.01 then
+	
+	tell application "LyricsX"
+		quit
+		
+		delay 0.1
+		if application "LyricsX" is not running then
+			tell application "LyricsX" to activate
+			
+		end if
+	end tell
+end if
+
+
