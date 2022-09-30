@@ -5,3 +5,4 @@ I'm searching a way to monitor player_song_changed event and restart the player 
 you can build it like application in apple script editor 
 Made by LLuna-a 
 if it works for you please star ⭐️  it and its open to any suggestions because its my first time learning apple script
+new fix is on the way but i couldnt find a good way to keep it in loop 
